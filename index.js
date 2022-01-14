@@ -11,29 +11,29 @@ class SortedList {
   }
 
   get(pos) {
-    if(pos < this.items.length) { return this.items[pos]; }
-    if(pos > this.items.length) { throw new Error('OutOfBounds'); }
+    if(pos < this.length) { return this.items[pos]; }
+    if(pos > this.length) { throw new Error('OutOfBounds'); }
   }
 
   max() {
-    if(this.items.length != 0) { return Math.max(this.items); }
+    if(this.length != 0) { return Math.max(...this.items); }
     else { throw new Error('EmptySortedList'); }
   }
 
   min() {
-    if(this.items.length != 0) { return Math.min(this.items); }
+    if(this.length != 0) { return Math.min(...this.items); }
     else { throw new Error('EmptySortedList'); }
   }
 
   sum() {
     let sum = 0;
-    for (let i = this.items.length; i--;) { sum += this.items[i]; }
+    for (let i = this.length; i--;) { sum += this.items[i]; }
     return sum;
   }
 
   avg() { 
-    if(!this.items || this.items.length == 0) { throw new Error('EmptySortedList')}
-    else { this.sum() / this.items.length; }
+    if(this.length != 0) { return this.sum() / this.length; }
+    else { throw new Error('EmptySortedList'); }
   }
 }
 
